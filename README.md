@@ -14,9 +14,10 @@ accwrp is a complete wrapper containing all affected BLAS and LAPACK
 functions defined in Lapack 3.2. (Note that later versions of Lapack
 define additional functions, those are not implemented in Accelerate)
 
-Compile as
+Build as
 
-    gfortran -fno-underscoring -c -O3 -shared -undefined dynamic_lookup wrapper.f -o libaccwrp.so
+    gfortran -fno-underscoring -c -O3 wrapper.f
+    libtool -static wrapper.o -o libaccwrp.a
 
 (the -fno-underscoring flag is vital!) and link this code before the
 Accelerate framework, i.e. as
